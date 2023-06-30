@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import SocialListVue from '@/components/social/SocialMediaListVue.vue';
 import ProfileVue from '@/components/home/ProfileVue.vue';
 import LayoutVue from '@/layouts/LayoutVue.vue';
 </script>
@@ -10,7 +11,7 @@ import LayoutVue from '@/layouts/LayoutVue.vue';
     </section>
 
     <section>
-      Dummy Section
+      <SocialListVue />
     </section>
   </LayoutVue>
 </template>
