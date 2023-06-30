@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import ProfileVue from '@/components/Home/ProfileVue.vue';
+import ProfileVue from '@/components/home/ProfileVue.vue';
+import LayoutVue from '@/layouts/LayoutVue.vue';
 </script>
 
 <template>
-  <main class='flex flex-col justify-center items-center h-screen'>
+  <LayoutVue>
     <section>
       <ProfileVue />
     </section>
@@ -11,5 +12,5 @@ import ProfileVue from '@/components/Home/ProfileVue.vue';
     <section>
       Dummy Section
     </section>
-  </main>
+  </LayoutVue>
 </template>
