@@ -1,48 +1,42 @@
 <script setup lang='ts'>
-import { ref } from 'vue';
-
-import ShareSvg from '@/assets/image/social/share.svg';
 import InlineSvg from 'vue-inline-svg';
 
+import ShareSvg from '@/assets/image/social/share.svg';
+import useToggleAnimation from '@/composable/useToggleAnimation';
+
 import type SocialDataType from '@/types/SocialList';
+import { None, Some } from '@sniptt/monads';
 
 defineProps<SocialDataType>();
 
-enum ItemState {
-    None, Open, Close
-}
+const [btnToggle, btnStyle] = useToggleAnimation({
+    animatedOnStart: false,
+    beforeAnimate: None,
+    onAnimate: 'btn-slide-left',
+    offAnimate: 'btn-slide-right'
+});
 
-// <!-- TODO : Maybe next time fix this (?)
-const state = ref(ItemState.None);
-const buttonAnimation = ref('');
-const linkAnimation = ref('hidden');
+const [linkToggle, linkStyle] = useToggleAnimation({
+    animatedOnStart: false,
+    beforeAnimate: Some('hidden'),
+    onAnimate: 'link-slide-right',
+    offAnimate: 'link-slide-left'
+});
 
 function toggleState() {
-    if (state.value == ItemState.None || state.value == ItemState.Close) {
-        state.value = ItemState.Open;
-
-        // Do the animation
-        buttonAnimation.value = 'btn-slide-left';
-        linkAnimation.value = 'link-slide-right';
-    }
-    else {
-        state.value = ItemState.Close;
-
-        // Do the animation
-        buttonAnimation.value = 'btn-slide-right';
-        linkAnimation.value = 'link-slide-left';
-    }
+    linkToggle();
+    btnToggle();
 }
 </script>
 
 <template>
     <li class='flex flex-row mx-2 min-w-[20%] justify-center relative'>
         <button @click='toggleState' :class='`z-10 cursor-pointer bg-blue-700 
-        shadow-inner rounded-2xl p-1 min-w-[50%] text-center text-white ${buttonAnimation}`'>
+        shadow-inner rounded-2xl p-1 min-w-[50%] text-center text-white ${btnStyle}`'>
             {{ $props.name }}
         </button>
 
-        <div :class='`absolute flex flex-row gap-1 right-[20%] ${linkAnimation}`' aria-label='button' aria-details='link'>
+        <div :class='`absolute flex flex-row gap-1 right-[20%] ${linkStyle}`' aria-label='button' aria-details='link'>
             <a :href='$props.link' target='_blank'>
                 <InlineSvg :src='$props.icon' class='w-8 h-8 text-blue-700' />
             </a>
