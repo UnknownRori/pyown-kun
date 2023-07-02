@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@sniptt/monads": "^0.5.10",
     "firebase": "^9.23.0",
     "pinia": "^2.1.3",
     "vue": "^3.3.4",
