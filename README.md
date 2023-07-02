@@ -4,7 +4,7 @@ A portfolio site for my friend, who for some reason just wanted to have one, and
 
 ## 🛠️ Development
 
-Nothing fancy just simple npm is all you need
+Nothing fancy just simple `npm` is all you need (or maybe `yarn` or `pnpm`), and some `Rust` programming language background since i like the concept of `Option` and `Result`
 
 ```sh
 # Clone the repository
@@ -13,8 +13,10 @@ git clone https://github.com/UnknownRori/pyown-kun
 # Enter cloned directory
 cd pyown-kun
 
-# Copy configuration
+# You may skip above this and disable firebase plugin inside ./src/main.ts
+# Copy configuration and set the secrets
 cp ./src/config/firebase.example.ts ./src/config/firebase.ts
+vim ./src/config/firebase.ts
 
 # Install the dependency
 npm install
