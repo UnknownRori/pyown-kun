@@ -30,7 +30,7 @@ function toggleState() {
 </script>
 
 <template>
-    <li class='flex flex-row mx-2 min-w-[20%] justify-center relative'>
+    <li class='relative mx-2 flex min-w-[20%] flex-row justify-center'>
         <button @click='toggleState' :class='`z-10 cursor-pointer bg-blue-700 
         shadow-inner rounded-2xl p-1 min-w-[50%] text-center text-white ${btnStyle}`'>
             {{ $props.name }}
@@ -38,12 +38,12 @@ function toggleState() {
 
         <div :class='`absolute flex flex-row gap-1 right-[20%] ${linkStyle}`' aria-label='button' aria-details='link'>
             <a :href='$props.link' target='_blank'>
-                <InlineSvg :src='$props.icon' class='w-8 h-8 text-blue-700' />
+                <InlineSvg :src='$props.icon' class='h-8 w-8 text-blue-700' />
             </a>
 
             <!-- TODO : Implement Share later -->
             <button>
-                <InlineSvg :src='ShareSvg' class='w-8 h-8 text-blue-700' />
+                <InlineSvg :src='ShareSvg' class='h-8 w-8 text-blue-700' />
             </button>
         </div>
     </li>
