@@ -29,3 +29,4 @@ coverage
 .env
 
 src/config/firebase.ts
+.firebaserc
