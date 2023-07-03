@@ -38,91 +38,15 @@ function toggleState() {
 
         <div :class='`absolute flex flex-row gap-1 right-[20%] ${linkStyle}`' aria-label='button' aria-details='link'>
             <a :href='$props.link' target='_blank'>
-                <InlineSvg :src='$props.icon' class='h-8 w-8 text-blue-700' />
+                <InlineSvg :src='$props.icon' class='h-8 w-8 text-blue-700 motion-safe:hover:animate-bounce' />
             </a>
 
             <!-- TODO : Implement Share later -->
             <button>
-                <InlineSvg :src='ShareSvg' class='h-8 w-8 text-blue-700' />
+                <InlineSvg :src='ShareSvg' class='h-8 w-8 text-blue-700 motion-safe:hover:animate-bounce' />
             </button>
         </div>
     </li>
 </template>
 
-<style scoped>
-.btn-slide-left {
-    animation: btn-slide-left forwards 500ms ease-in-out;
-}
-
-.btn-slide-right {
-    animation: btn-slide-right forwards 500ms ease-in-out;
-}
-
-@keyframes btn-slide-left {
-    0% {
-        transform: translateX(0);
-    }
-
-    80% {
-        transform: translateX(-20%);
-    }
-
-    100% {
-        transform: translateX(-15%);
-    }
-}
-
-@keyframes btn-slide-right {
-    0% {
-        transform: translateX(-15%);
-    }
-
-    80% {
-        transform: translateX(5%);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-}
-
-.link-slide-left {
-    animation: link-slide-left forwards 400ms ease-in-out;
-}
-
-.link-slide-right {
-    animation: link-slide-right forwards 400ms ease-in-out;
-}
-
-@keyframes link-slide-left {
-    0% {
-        transform: translateX(0);
-        opacity: 100;
-    }
-
-    80% {
-        transform: translateX(-50%);
-    }
-
-    100% {
-        transform: translateX(-20%);
-        opacity: 0;
-    }
-}
-
-@keyframes link-slide-right {
-    0% {
-        transform: translateX(-20%);
-        opacity: 0;
-    }
-
-    80% {
-        transform: translateX(20%);
-    }
-
-    100% {
-        transform: translateX(0);
-        opacity: 100;
-    }
-}
-</style>
+<style scoped src='./SocialMediaItemAnimate.css'></style>
