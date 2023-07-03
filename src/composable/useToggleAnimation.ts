@@ -58,7 +58,6 @@ export default function (opts: ToggleAnimationOpts): [Toggle, ReturningStyle] {
             // Do the animation
             animateStyle.value = opts.offAnimate;
         }
-        console.log(animateStyle.value);
     };
     return [toggle, animateStyle];
 }
