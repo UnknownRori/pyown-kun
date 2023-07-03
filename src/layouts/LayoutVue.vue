@@ -6,7 +6,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <main :class='`min-h-screen bg-gray-100 ${props.class}`'>
+    <main :class='`m-0 p-0 min-h-screen bg-gray-100 bg-[url(../assets/image/background/grid.svg)] ${props.class}`'>
         <slot />
     </main>
 </template>
