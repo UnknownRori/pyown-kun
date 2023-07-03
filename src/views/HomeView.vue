@@ -6,7 +6,8 @@ import LayoutVue from '@/layouts/LayoutVue.vue';
 
 <template>
   <LayoutVue class=' m-2 flex min-h-screen flex-col items-center justify-center'>
-    <div class='flex flex-col items-center justify-center gap-12 rounded-2xl py-6 shadow-lg sm:w-full md:w-3/4'>
+    <div
+      class='flex flex-col items-center justify-center gap-12 rounded-2xl bg-gray-100 py-6 shadow-2xl sm:w-full md:w-3/4'>
       <section>
         <ProfileVue />
       </section>
