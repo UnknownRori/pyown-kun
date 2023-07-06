@@ -3,12 +3,11 @@ import type { Option } from "@sniptt/monads";
 
 type FacebookShareOpts = {
     rel: Option<string>,
-    text: Option<string>,
     target: Option<Target>,
     href: string,
 };
 
-type ReturnValue = () => void
+type ReturnValue = [() => void, string]
 
 export default function (opts: FacebookShareOpts): ReturnValue {
     const encodeUrl = encodeURIComponent(opts.href);
@@ -23,5 +22,5 @@ export default function (opts: FacebookShareOpts): ReturnValue {
         );
     };
 
-    return redirect;
+    return [redirect, facebookUrl];
 }

@@ -73,3 +73,31 @@
         opacity: 100;
     }
 }
+
+.dialog-pop-up {
+    animation: dialog-pop-up forwards 500ms ease-in-out;
+}
+
+.dialog-hidden {
+    animation: dialog-hide forwards 500ms ease-in-out;
+}
+
+@keyframes dialog-pop-up {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes dialog-hide {
+    0% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
