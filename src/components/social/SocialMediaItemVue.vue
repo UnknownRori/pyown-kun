@@ -3,6 +3,8 @@ import InlineSvg from 'vue-inline-svg';
 
 import ShareSvg from '@/assets/image/social/share.svg';
 import useToggleAnimation from '@/composable/useToggleAnimation';
+import DialogMenu from '@/components/shared/DialogMenuVue.vue';
+import TwitterShareButton from './TwitterShareButtonVue.vue';
 
 import type SocialDataType from '@/types/SocialList';
 import { None, Some } from '@sniptt/monads';
@@ -23,9 +25,21 @@ const [linkToggle, linkStyle] = useToggleAnimation({
     offAnimate: 'link-slide-left'
 });
 
+const [shareDialogMenuToggle, shareDialogStyle] = useToggleAnimation({
+    animatedOnStart: false,
+    beforeAnimate: Some(''),
+    // beforeAnimate: Some('hidden'),
+    onAnimate: 'link-slide-right',
+    offAnimate: 'link-slide-left'
+});
+
 function toggleState() {
     linkToggle();
     btnToggle();
+}
+
+function showShareDialog() {
+    shareDialogMenuToggle();
 }
 </script>
 
@@ -42,9 +56,13 @@ function toggleState() {
             </a>
 
             <!-- TODO : Implement Share later -->
-            <button>
+            <button @click='showShareDialog'>
                 <InlineSvg :src='ShareSvg' class='h-8 w-8 text-blue-700 motion-safe:hover:animate-bounce' />
             </button>
+
+            <DialogMenu :class='`absolute -translate-y-14  ${shareDialogStyle}`'>
+                <TwitterShareButton :href='$props.link' />
+            </DialogMenu>
         </div>
     </li>
 </template>
