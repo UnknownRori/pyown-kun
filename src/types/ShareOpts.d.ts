@@ -10,7 +10,6 @@ type ShareOpts = {
     rel: Option<string>,
     target: Option<Target>,
     href: string,
-
 };
 
 export { RefererPolicy, Target };
