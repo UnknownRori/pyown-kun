@@ -1,4 +1,4 @@
-import type { Target } from "@/types/ShareOpts";
+import type { Target } from "@/types/RedirectOpts";
 import type { Option } from "@sniptt/monads";
 
 type FacebookShareOpts = {

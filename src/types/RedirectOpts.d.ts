@@ -6,7 +6,7 @@ import type { Option } from "@sniptt/monads";
 
 type Target = '_self' | '_blank' | '_parent' | '_top';
 
-type ShareOpts = {
+type RedirectOpts = {
     rel: Option<string>,
     target: Option<Target>,
     href: string,
