@@ -8,14 +8,21 @@ type TwitterShareOpts = {
     href: string,
 };
 
-export default function (opts: TwitterShareOpts) {
+type ReturnValue = [() => void, string]
+
+export default function (opts: TwitterShareOpts): ReturnValue {
     const encodeUrl = encodeURIComponent(opts.href);
     const encodeText = encodeURIComponent(opts.text.unwrapOr(''));
     const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeUrl}&text=${encodeText}`;
 
-    window.open(
-        twitterUrl,
-        opts.target.unwrapOr('_blank'),
-        opts.rel.unwrapOr(''),
-    );
+    // TODO : Refactor this
+    const redirect = () => {
+        window.open(
+            twitterUrl,
+            opts.target.unwrapOr('_blank'),
+            opts.rel.unwrapOr(''),
+        );
+    };
+
+    return [redirect, twitterUrl];
 }
