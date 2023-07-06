@@ -1,6 +1,9 @@
 import type { Target } from "@/types/RedirectOpts";
 import type { Option } from "@sniptt/monads";
 
+import defaultRedirectOpts from "@/config/defaultRedirectOpts";
+import Redirect from '@/composable/useRedirect';
+
 type FacebookShareOpts = {
     rel: Option<string>,
     target: Option<Target>,
@@ -13,14 +16,10 @@ export default function (opts: FacebookShareOpts): ReturnValue {
     const encodeUrl = encodeURIComponent(opts.href);
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeUrl}`;
 
-    // TODO : Refactor this
-    const redirect = () => {
-        window.open(
-            facebookUrl,
-            opts.target.unwrapOr('_blank'),
-            opts.rel.unwrapOr(''),
-        );
-    };
+    const redirect = Redirect({
+        ...defaultRedirectOpts,
+        href: facebookUrl,
+    });
 
     return [redirect, facebookUrl];
 }

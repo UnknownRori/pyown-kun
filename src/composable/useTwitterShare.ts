@@ -1,6 +1,9 @@
 import type { Target } from '@/types/RedirectOpts';
 import type { Option } from '@sniptt/monads';
 
+import defaultRedirectOpts from "@/config/defaultRedirectOpts";
+import Redirect from '@/composable/useRedirect';
+
 type TwitterShareOpts = {
     rel: Option<string>,
     text: Option<string>,
@@ -15,14 +18,10 @@ export default function (opts: TwitterShareOpts): ReturnValue {
     const encodeText = encodeURIComponent(opts.text.unwrapOr(''));
     const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeUrl}&text=${encodeText}`;
 
-    // TODO : Refactor this
-    const redirect = () => {
-        window.open(
-            twitterUrl,
-            opts.target.unwrapOr('_blank'),
-            opts.rel.unwrapOr(''),
-        );
-    };
+    const redirect = Redirect({
+        ...defaultRedirectOpts,
+        href: twitterUrl,
+    });
 
     return [redirect, twitterUrl];
 }

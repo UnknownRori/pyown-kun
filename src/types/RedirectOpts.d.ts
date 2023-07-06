@@ -14,4 +14,4 @@ type RedirectOpts = {
 
 export { RefererPolicy, Target };
 
-export default ShareOpts;
+export default RedirectOpts;
